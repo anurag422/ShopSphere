@@ -4,6 +4,7 @@ import com.shopsphere.auth.Enum.AccountStatus;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Set;
 import java.util.UUID;
 
 @Data
@@ -30,5 +31,9 @@ public class User extends BaseEntity{
 
     @Column(nullable = false)
     private boolean emailVerified;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "user_roles",joinColumns = @JoinColumn(name = "user_id"),inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles;
 
 }
