@@ -16,7 +16,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "role")
+@Table(name = "roles")
 public class Role {
 
     @Id
