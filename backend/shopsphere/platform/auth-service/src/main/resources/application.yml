@@ -12,13 +12,26 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: validate
+      ddl-auto: update
 
     show-sql: true
 
   flyway:
     enabled: true
     baseline-on-migrate: true
+
+  mail:
+    host: sandbox.smtp.mailtrap.io
+    port: 2525
+    username: 95b7ca2a0838e4
+    password: 37970a6991d8c2
+
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable : true
 
 eureka:
   client:
@@ -29,3 +42,19 @@ eureka:
 jwt:
   secret: 5E4F7A8B9C0D1E2F3A4B5C6D7E8F9A0B1C2D3E4F5A6B7C8D9E0F1A2B3C4D5E6F
   expiration: 3600000
+  access-token:
+    expiration:
+      900
+  refresh-token:
+    expiration:
+      604800
+
+password-reset:
+  expiration:
+    900
+
+logging:
+  level:
+    org:
+      springframework:
+        security : DEBUG

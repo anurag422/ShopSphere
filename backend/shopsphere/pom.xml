@@ -27,6 +27,7 @@
         <module>platform/config-server</module>
         <module>platform/api-gateway</module>
         <module>platform/auth-service</module>
+        <module>platform/product-service</module>
     </modules>
 
     <properties>
