@@ -38,17 +38,17 @@ public class PasswordResetTokenServiceImpl implements PasswordResetTokenService 
 
     @Override
     public PasswordResetToken verifyPasswordResetToken(String token) {
-        PasswordResetToken resetToken = passwordResetTokenRepo.findByToken(token).orElseThrow(() -> new PasswordResetTokenException("Password Reset token is not found"));
+        PasswordResetToken passwordResetToken = passwordResetTokenRepo.findByToken(token).orElseThrow(() -> new PasswordResetTokenException("Password Reset token is not found"));
 
-        if (resetToken.isUsed()){
+        if (passwordResetToken.isUsed()){
             throw  new PasswordResetTokenException("Reset Password token is Used");
         }
 
-        if (resetToken.getExpiryDate().isBefore(LocalDateTime.now())){
+        if (passwordResetToken.getExpiryDate().isBefore(LocalDateTime.now())){
             throw new PasswordResetTokenException("Reset token is Expired");
         }
 
-        return resetToken;
+        return passwordResetToken;
 
     }
 

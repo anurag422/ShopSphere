@@ -15,6 +15,8 @@ public class AuthenticationResponse {
 
     private String RefreshToken;
 
+    private String message;
+
     private String tokenType;
 
     private Long expiresIn;

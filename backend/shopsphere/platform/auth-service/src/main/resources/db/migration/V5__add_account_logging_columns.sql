@@ -1,0 +1,8 @@
+ALTER TABLE users
+ADD COLUMN account_non_locked BOOLEAN NOT NULL DEFAULT TRUE;
+
+ALTER TABLE users
+ADD COLUMN failed_login_attempts INTEGER NOT NULL DEFAULT 0;
+
+ALTER TABLE users
+ADD COLUMN lock_time TIMESTAMP;

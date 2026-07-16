@@ -5,6 +5,25 @@ spring:
   application:
     name: auth-service
 
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${Google_Client_ID}
+            client-secret: ${Google_CLient_Secret}
+
+            scope:
+              - email
+              - profile
+          github:
+            client-id: ${GitHub_Client_ID}
+            client-secret: ${GitHub_Client_Secret}
+            scope:
+              - read:user
+              - user:email
+
+
   datasource:
     url: jdbc:postgresql://localhost:5432/shopsphere_auth
     username: postgres
@@ -58,3 +77,8 @@ logging:
     org:
       springframework:
         security : DEBUG
+
+security:
+  login:
+    max-attempts : 5
+    lock-duration: 1800

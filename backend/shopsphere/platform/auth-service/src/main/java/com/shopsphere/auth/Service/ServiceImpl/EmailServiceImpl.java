@@ -26,4 +26,28 @@ public class EmailServiceImpl implements EmailService {
         javaMailSender.send(mailMessage);
 
     }
+
+    @Override
+    public void sendEmailVerification(String email, String token) {
+
+        SimpleMailMessage message = new SimpleMailMessage();
+
+        message.setTo(email);
+        message.setSubject("Verify your ShopSphere Account");
+
+        message.setText(
+                """
+                Welcome to ShopSphere!
+    
+                Click the link below to verify your email.
+    
+                http://localhost:3000/api/v1/auth/verify-email?token=%s
+                """.formatted(token)
+        );
+
+        javaMailSender.send(message);
+
+    }
+
+
 }

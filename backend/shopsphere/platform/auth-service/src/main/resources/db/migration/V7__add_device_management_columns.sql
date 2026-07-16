@@ -1,0 +1,11 @@
+ALTER TABLE refresh_token
+ADD COLUMN device_name VARCHAR(255) NOT NULL DEFAULT 'Unknown Device';
+
+ALTER TABLE refresh_token
+ADD COLUMN ip_address VARCHAR(255) NOT NULL DEFAULT 'Unknown';
+
+ALTER TABLE refresh_token
+ADD COLUMN user_agent TEXT NOT NULL DEFAULT 'Unknown';
+
+ALTER TABLE refresh_token
+ADD COLUMN last_used_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;

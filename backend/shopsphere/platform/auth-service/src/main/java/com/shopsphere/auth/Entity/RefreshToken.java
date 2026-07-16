@@ -31,4 +31,17 @@ public class RefreshToken extends BaseEntity{
     @JoinColumn(name = "user_id",nullable = false)
     private User user;
 
+    @Column(nullable = false)
+    private String deviceName;
+
+    @Column(nullable = false)
+    private String ipAddress;
+
+    @Column(nullable = false)
+    private String userAgent;
+
+    @Column(nullable = false)
+    private LocalDateTime lastUsedAt;
+
+
 }

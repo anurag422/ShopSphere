@@ -4,6 +4,7 @@ import com.shopsphere.auth.Enum.AccountStatus;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDateTime;
 import java.util.Set;
 import java.util.UUID;
 
@@ -36,5 +37,15 @@ public class User extends BaseEntity{
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_roles",joinColumns = @JoinColumn(name = "user_id"),inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
+
+    @Builder.Default
+    @Column(nullable = false)
+    private boolean accountNonLocked = true;
+
+    @Builder.Default
+    @Column(nullable = false)
+    private int failedLoginAttempts = 0;
+
+    private LocalDateTime lockTime;
 
 }
